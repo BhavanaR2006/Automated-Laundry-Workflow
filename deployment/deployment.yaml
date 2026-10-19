@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laundry-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laundry
+  template:
+    metadata:
+      labels:
+        app: laundry
+    spec:
+      containers:
+      - name: laundry-app
+        image: automated-laundry:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8501
